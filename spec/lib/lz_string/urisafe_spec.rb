@@ -12,5 +12,9 @@ describe LZString::UriSafe do
     it "decompresses string" do
       expect(described_class.decompress(compressed)).to eq text
     end
+
+    it "decompresses string utf8" do
+      expect(described_class.decompress(compressed, "UTF-8")).to eq text
+    end
   end
 end

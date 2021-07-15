@@ -11,14 +11,15 @@ module LZString
     end
 
     # @param compressed [String]
-    def self.decompress(compressed)
+    def self.decompress(compressed, enconding = "ASCII-8BIT")
       return "" if compressed.nil?
       return nil if compressed == ""
       compressed.gsub!(" ","+")
       LZString::Base.decompress(
         compressed.length,
         32,
-        lambda { |index| get_base_value(KEY_STR_URISAFE, compressed[index]) }
+        lambda { |index| get_base_value(KEY_STR_URISAFE, compressed[index]) },
+        enconding
       )
     end
 
